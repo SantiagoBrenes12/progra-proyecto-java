@@ -12,7 +12,7 @@ private static final ArrayList <Autos> lista= new ArrayList();
 
 //crear ----------------------------------------------------------------------------------------------
 @Override
-public void AgregarAutos(){
+public void Agregar(){
     String chasis;
     String marca;
     String estilo;
@@ -33,14 +33,15 @@ public void AgregarAutos(){
 
 //consultar  persona (opcion 1)-----------------------------------------------------------------------------------
     @Override
-    public void ConsultarAutos(){
+    public void Consultar(){
            
         Autos auto = new Autos();
-        int IdConsulta=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el número de chasis que desea consultar: "));
+        String IdConsulta = (JOptionPane.showInternalInputDialog(null, "Ingrese el número de chasis que desea consultar: "));
+                
         for (int i = 0; i < lista.size(); i++) {
             auto = (Autos) lista.get(i);
             auto = (Autos) lista.get(i);
-            if (auto.getId()==IdConsulta){
+            if (auto.getChasis() == IdConsulta){
                 IdConsulta=auto.getChasis();
                 JOptionPane.showMessageDialog(null, "Resultado de busqueda: "+lista.get(i));
                 break;
@@ -61,7 +62,7 @@ public void AgregarAutos(){
        
 // Editar -------------------------------------------------------------------------------------------------
     @Override
-    public void EditarAutos() {
+    public void Editar() {
         Autos auto = new Autos();
         int autoChasis=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el número de chasis que desea modificar: "));
         for (int i = 0; i < lista.size(); i++) {
@@ -82,7 +83,7 @@ public void AgregarAutos(){
     
     //while(Comprado==fasle){
        @Override
-       public void EliminarAutos(){
+       public void Eliminar(){
         Autos auto = new Autos();
         int autoChasis=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el número de chasis del auto que desea eliminar: "));
         for (int i = 0; i < lista.size(); i++) {

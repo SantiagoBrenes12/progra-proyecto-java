@@ -10,13 +10,13 @@ package interfaces;
  */
 public interface CrudInterface {
     
-    public void AgregarPersona();
+    public void Agregar();
         
-    public void ConsultarPersona();
+    public void Consultar();
     
     public void verificarLista();
     
-    public void EditarPersona();
+    public void Editar();
     
-    public void EliminarPersona();
+    public void Eliminar();
 }

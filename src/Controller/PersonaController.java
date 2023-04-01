@@ -14,7 +14,7 @@ private static ArrayList <Persona> lista= new ArrayList();
 
 //crear ----------------------------------------------------------------------------------------------
 @Override
-public void AgregarPersona(){
+public void Agregar(){
     Boolean Comprado=false;    //parametro que indica si la persona ya ha adquirido un Auto
     String nombre;
     String numeroTelefono;
@@ -30,7 +30,7 @@ public void AgregarPersona(){
 
 //consultar  persona (opcion 1)-----------------------------------------------------------------------------------
     @Override
-    public void ConsultarPersona(){
+    public void Consultar(){
            
         Persona persona = new Persona();
         int IdConsulta=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea consultar: "));
@@ -58,7 +58,7 @@ public void AgregarPersona(){
        
 // Editar -------------------------------------------------------------------------------------------------
     @Override
-    public void EditarPersona() {
+    public void Editar() {
         Persona persona = new Persona();
         int personaID=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea modificar: "));
         for (int i = 0; i < lista.size(); i++) {
@@ -76,7 +76,7 @@ public void AgregarPersona(){
     
     //while(Comprado==fasle){
        @Override
-       public void EliminarPersona(){
+       public void Eliminar(){
         Persona persona = new Persona();
         int personaID=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea eliminar: "));
         for (int i = 0; i < lista.size(); i++) {
