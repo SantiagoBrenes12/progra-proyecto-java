@@ -1,13 +1,15 @@
 package view;
 
+import view.formularios.Formulario;
+import view.formularios.FormularioFactory;
 import view.menus.Menu;
+import view.utilidades.UtilidadesFormulario;
 import view.utilidades.UtilidadesMenu;
 
 public class View {
-    
+
     private static String[] opcionesMenuPrincipal = UtilidadesMenu.obtenerOpcionesMPrincipal();
     private static String[] opcionesCrud = UtilidadesMenu.obtenerOpcionesCrud();
-
 
     public void manejarMenuPrincipal() {
         Menu menu = new Menu("Menu principal", opcionesMenuPrincipal);
@@ -31,13 +33,19 @@ public class View {
                 manejarMenuPrincipal();
                 return;
             }
-          
-            generarFormulario(opcionElegidaSubMenu);
+
+            generarFormulario(opcionElegidaMenuPrincipal, opcionElegidaSubMenu);
         }
     }
-    
-    private void generarFormulario(String modulo){
-        // todo: formulario
+
+    private void generarFormulario(String modulo, String accion) {
+        FormularioFactory formularioFactory = new FormularioFactory();
+        Formulario formulario = formularioFactory.obtenerFormulario(modulo);
+        formulario.mostrarFormulario();
+        String[] datos = UtilidadesFormulario.obtenerDatosFormularioDado(formulario);
+
+        // todo : implementar conexion a controladores
+
     }
 
 }
