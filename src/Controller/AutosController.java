@@ -2,7 +2,7 @@ package Controller;
 
 import javax.swing.JOptionPane;
 import interfaces.CrudInterface;
-import Modulos.Autos;
+import Modelos.Autos;
 import java.util.ArrayList;
 
 

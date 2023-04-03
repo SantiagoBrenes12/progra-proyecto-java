@@ -3,7 +3,7 @@ package Controller;
 
 import javax.swing.JOptionPane;
 import interfaces.CrudInterface;
-import Modulos.Persona;
+import Modelos.Persona;
 import java.util.ArrayList;
 import java.util.List;
 
