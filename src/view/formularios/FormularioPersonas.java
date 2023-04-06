@@ -10,6 +10,7 @@ public class FormularioPersonas extends Formulario {
     private JTextField numeroTelefono;
     private JTextField correo;
     private Object[] campos;
+    private boolean soloLectura;
 
     {
         this.id = new JTextField();

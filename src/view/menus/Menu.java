@@ -30,5 +30,4 @@ public class Menu {
         String opcionElegida = this.opciones[this.opcionElegida];
         return opcionElegida;
     }
-
 }

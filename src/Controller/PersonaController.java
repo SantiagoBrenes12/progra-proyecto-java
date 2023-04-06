@@ -88,6 +88,11 @@ public void Agregar(){
             }
         }
     }
+
+    @Override
+    public ArrayList obtenerLista() {
+        return lista;
+    }
 }
     
     

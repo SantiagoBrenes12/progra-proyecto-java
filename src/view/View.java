@@ -1,5 +1,7 @@
 package view;
 
+import Controller.ControllerFactory;
+import interfaces.CrudInterface;
 import view.formularios.Formulario;
 import view.formularios.FormularioFactory;
 import view.menus.Menu;
@@ -8,11 +10,8 @@ import view.utilidades.UtilidadesMenu;
 
 public class View {
 
-    private static String[] opcionesMenuPrincipal = UtilidadesMenu.obtenerOpcionesMPrincipal();
-    private static String[] opcionesCrud = UtilidadesMenu.obtenerOpcionesCrud();
-
     public void manejarMenuPrincipal() {
-        Menu menu = new Menu("Menu principal", opcionesMenuPrincipal);
+        Menu menu = new Menu("Menu principal", UtilidadesMenu.obtenerOpcionesMPrincipal());
         menu.mostrarMenu();
         String opcionMenuPrincipal = menu.obtenerOpcionElegida();
 
@@ -23,29 +22,43 @@ public class View {
         manejarSubmenu(opcionMenuPrincipal);
     }
 
-    private void manejarSubmenu(String opcionElegidaMenuPrincipal) {
+    private void manejarSubmenu(String moduloEscogido) {
         while (true) {
-            Menu subMenu = new Menu(opcionElegidaMenuPrincipal, opcionesCrud);
+            Menu subMenu = new Menu(moduloEscogido, UtilidadesMenu.obtenerOpcionesCrud());
             subMenu.mostrarMenu();
-            String opcionElegidaSubMenu = subMenu.obtenerOpcionElegida();
+            String opcionCrud = subMenu.obtenerOpcionElegida();
 
-            if (opcionElegidaSubMenu.equals("Volver")) {
+            if (opcionCrud.equals("Volver")) {
                 manejarMenuPrincipal();
                 return;
             }
 
-            generarFormulario(opcionElegidaMenuPrincipal, opcionElegidaSubMenu);
+            Formulario formulario = generarFormulario(moduloEscogido);
+
+            if (opcionCrud.equalsIgnoreCase("Agregar")) {
+                formulario.mostrarFormulario(false);
+                continue;
+            }
+
+            if (opcionCrud != "Editar") {
+                formulario.setModoSoloLectura();
+            }
+
+            formulario.mostrarFormulario(true);
+
+            //CrudInterface controlador = obtenerControlador(moduloEscogido);
         }
     }
 
-    private void generarFormulario(String modulo, String accion) {
+    private Formulario generarFormulario(String modulo) {
         FormularioFactory formularioFactory = new FormularioFactory();
         Formulario formulario = formularioFactory.obtenerFormulario(modulo);
-        formulario.mostrarFormulario();
-        String[] datos = UtilidadesFormulario.obtenerDatosFormularioDado(formulario);
 
-        // todo : implementar conexion a controladores
-
+        return formulario;
     }
 
+    private CrudInterface obtenerControlador(String controlador) {
+        ControllerFactory controller = new ControllerFactory(controlador);
+        return controller.getControlador();
+    }
 }

@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author danie
@@ -19,4 +21,6 @@ public interface CrudInterface {
     public void Editar();
     
     public void Eliminar();
+    
+    public ArrayList obtenerLista();
 }
