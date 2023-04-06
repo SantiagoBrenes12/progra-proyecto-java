@@ -1,4 +1,3 @@
-
 package Controller;
 
 import javax.swing.JOptionPane;
@@ -7,81 +6,77 @@ import Modelos.Persona;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class PersonaController implements CrudInterface {
 
-private static ArrayList <Persona> lista= new ArrayList();
+    private static ArrayList<Persona> lista = new ArrayList();
 
 //crear ----------------------------------------------------------------------------------------------
-@Override
-public void Agregar(){
-    Boolean Comprado=false;    //parametro que indica si la persona ya ha adquirido un Auto
-    String nombre;
-    String numeroTelefono;
-    String correo;
+    @Override
+    public void Agregar(String[] datos) {
+        String id = datos[0];
+        String nombre = datos[1];
+        String numeroTelefono = datos[2];
+        String correo = datos[3];
 
-    nombre = JOptionPane.showInputDialog("Ingrese el nombre de la persona: ");
-    numeroTelefono = JOptionPane.showInputDialog("Ingrese el numero de telefono de la persona: ");
-    correo = JOptionPane.showInputDialog("Ingrese el correo electronico de la persona: ");
+        Persona personas = new Persona(id, nombre, numeroTelefono, correo);
+        lista.add(personas);
 
-    Persona personas = new Persona(nombre, numeroTelefono, correo);
-    lista.add(personas);
-}
+        for (Persona persona : lista) {
+            System.out.println(persona.getId());
+            System.out.println(persona.getNombre());
+            System.out.println(persona.getNumeroTelefono());
+            System.out.println(persona.getCorreo());
+        }
+    }
 
 //consultar  persona (opcion 1)-----------------------------------------------------------------------------------
     @Override
-    public void Consultar(){
-           
+    public void Consultar() {
+
         Persona persona = new Persona();
-        int IdConsulta=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea consultar: "));
         for (int i = 0; i < lista.size(); i++) {
             persona = (Persona) lista.get(i);
-            persona = (Persona) lista.get(i);
-            if (persona.getId()==IdConsulta){
-                IdConsulta=persona.getId();
-                JOptionPane.showMessageDialog(null, "Resultado de busqueda: "+lista.get(i));
+            if (persona.getId().equals("a")) {
                 break;
             }
         }
     }
 
 //consular lista (opcion 2)--------------------------------------------------------------------------------
-     @Override  
-     public void verificarLista() {
-          String info = "";
+    @Override
+    public void verificarLista() {
+        String info = "";
         for (Persona persona : lista) {
             JOptionPane.showMessageDialog(null, lista);
-  
+
         }
-     }  
-   
-       
+    }
+
 // Editar -------------------------------------------------------------------------------------------------
     @Override
     public void Editar() {
         Persona persona = new Persona();
-        int personaID=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea modificar: "));
+        String personaID = JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea modificar: ");
         for (int i = 0; i < lista.size(); i++) {
             persona = (Persona) lista.get(i);
-            if (persona.getId()==personaID){
-                lista.get(personaID).setNombre(JOptionPane.showInputDialog("Ingrese el nuevo nombre"));
-                lista.get(personaID).setNumeroTelefono(JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono"));
-                lista.get(personaID).setCorreo(JOptionPane.showInputDialog("Ingrese el nuevo Correo"));
+            if (persona.getId().equals(personaID)) {
+                persona.setNombre(JOptionPane.showInputDialog("Ingrese el nuevo nombre"));
+                persona.setNumeroTelefono(JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono"));
+                persona.setCorreo(JOptionPane.showInputDialog("Ingrese el nuevo Correo"));
                 break;
             }
         }
     }
-    
+
 //Eliminar ----------------------------------------------------------------------------------------------------
-    
     //while(Comprado==fasle){
-       @Override
-       public void Eliminar(){
+    @Override
+    public void Eliminar() {
         Persona persona = new Persona();
-        int personaID=Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea eliminar: "));
+        String personaID = JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea eliminar: ");
         for (int i = 0; i < lista.size(); i++) {
-            persona = (Persona)lista.get(i);
-            if (persona.getId()==personaID){
+            persona = (Persona) lista.get(i);
+            if (persona.getId().equals(personaID)) {
                 JOptionPane.showMessageDialog(null, "La persona ha sido eliminada.");
                 lista.remove(i);
                 break;
@@ -93,10 +88,32 @@ public void Agregar(){
     public ArrayList obtenerLista() {
         return lista;
     }
+
+    @Override
+    public boolean registroExiste(String idSolicitado) {
+        boolean existe = false;
+        for (Persona persona : lista) {
+            if (persona.getId().equals(idSolicitado)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    @Override
+    public String[] obtenerRegistro(String idSolicitado) {
+        String[] registro = {};
+        for (Persona persona : lista) {
+            if (persona.getId().equals(idSolicitado)) {
+                registro = new String[]{
+                    persona.getId(),
+                    persona.getNombre(),
+                    persona.getNumeroTelefono(),
+                    persona.getCorreo()
+                };
+            }
+        }
+
+        return registro;
+    }
 }
-    
-    
-    
-    
-    
- 

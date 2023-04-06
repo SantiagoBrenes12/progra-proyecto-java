@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public interface CrudInterface {
     
-    public void Agregar();
+    public void Agregar(String[] datos);
         
     public void Consultar();
     
@@ -23,4 +23,8 @@ public interface CrudInterface {
     public void Eliminar();
     
     public ArrayList obtenerLista();
+    
+    public boolean registroExiste(String idSolicitado);
+    
+    public String[] obtenerRegistro(String idSolicitado);
 }

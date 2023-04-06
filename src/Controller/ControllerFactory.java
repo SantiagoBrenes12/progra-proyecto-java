@@ -14,7 +14,7 @@ public class ControllerFactory {
     public CrudInterface obtenerControlador(String nombreControlador){
         CrudInterface controller = null;
         if(nombreControlador.equalsIgnoreCase("modulo personas")){
-            controller = new AutosController();
+            return new PersonaController();
         }
       
         return null;

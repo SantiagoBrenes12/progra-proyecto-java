@@ -7,18 +7,14 @@ public abstract class Formulario {
 
     private Object[] campos;
     private String tituloFormulario;
-    int confirmacion;
+
 
     public Formulario(Object[] campos, String tituloFormulario) {
         this.campos = campos;
         this.tituloFormulario = tituloFormulario;
     }
 
-    public void mostrarFormulario(boolean menuObtenerId) {
-        if(menuObtenerId){
-            System.out.println("view.formularios.Formulario.mostrarFormulario()");
-        }
-        
+    public void mostrarFormulario() {
         JOptionPane.showOptionDialog(null,
                 this.campos,
                 this.tituloFormulario,

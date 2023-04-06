@@ -90,4 +90,14 @@ public class AutosController implements CrudInterface {
     public ArrayList obtenerLista() {
         return lista;
     }
+
+    @Override
+    public boolean registroExiste(String idSolicitado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String[] obtenerRegistro(String idSolicitado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

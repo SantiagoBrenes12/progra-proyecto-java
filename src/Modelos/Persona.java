@@ -3,7 +3,7 @@ package Modelos;
 
 public class Persona {
     //Atributos
-    private int id;
+    private String id;
     private String nombre;
     private String numeroTelefono;
     private String correo;
@@ -13,7 +13,7 @@ public class Persona {
     public Persona() {
     }
     
-    public Persona(String nombre, String numeroTelefono, String correo) {
+    public Persona(String id, String nombre, String numeroTelefono, String correo) {
         this.id = id;
         this.nombre = nombre;
         this.numeroTelefono = numeroTelefono;
@@ -21,18 +21,18 @@ public class Persona {
     }
  //get set
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getNombre(int Id) {
+    public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -49,21 +49,12 @@ public class Persona {
         return correo;
     }
 
-    public void setCorreo(String correo) { 
+    public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
+    
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Persona{");
-        sb.append("id=").append(id);
-        sb.append(", nombre=").append(nombre);
-        sb.append(", numeroTelefono=").append(numeroTelefono);
-        sb.append(", correo=").append(correo);
-        sb.append('}');
-        return sb.toString();
-    }
 public static void main(String[] args){
 }
 
