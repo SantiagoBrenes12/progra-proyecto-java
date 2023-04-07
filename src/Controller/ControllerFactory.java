@@ -16,6 +16,10 @@ public class ControllerFactory {
         if(nombreControlador.equalsIgnoreCase("modulo personas")){
             return new PersonaController();
         }
+        
+        if(nombreControlador.equalsIgnoreCase("modulo autos")){
+            return new AutosController();
+        }
       
         return null;
     }

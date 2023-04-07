@@ -16,11 +16,9 @@ public interface CrudInterface {
         
     public void Consultar();
     
-    public void verificarLista();
-    
-    public void Editar();
-    
-    public void Eliminar();
+    public void Editar(String[] datos);
+     
+    public void Eliminar(String id);
     
     public ArrayList obtenerLista();
     

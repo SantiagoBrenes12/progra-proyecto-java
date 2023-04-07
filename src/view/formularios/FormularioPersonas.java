@@ -10,41 +10,32 @@ public class FormularioPersonas extends Formulario {
     private JTextField numeroTelefono;
     private JTextField correo;
     private Object[] campos;
-    private boolean soloLectura;
 
     {
         this.id = new JTextField();
         this.nombre = new JTextField();
         this.numeroTelefono = new JTextField();
         this.correo = new JTextField();
-        
-        this.campos = new Object[] {
-            "Cedula",this.id,
-            "Nombre",this.nombre,
-            "Telefono",this.numeroTelefono,
-            "Correo",this.correo
+
+        this.campos = new Object[]{
+            "Cedula", this.id,
+            "Nombre", this.nombre,
+            "Telefono", this.numeroTelefono,
+            "Correo", this.correo
         };
     }
 
     public FormularioPersonas() {
-        super(null,nombreFormulario);
+        super(null, nombreFormulario);
         setCampos(campos);
-    }
-
-    @Override
-    public String[] obtenerDatosFormulario() {
-        String[] datos = {
-            this.getId(),
-            this.getNombre(),
-            this.getNumeroTelefono(),
-            this.getCorreo()
-        };
-        
-        return datos;
     }
 
     public String getId() {
         return id.getText();
+    }
+
+    public void setId(String id) {
+        this.id.setText(id);
     }
 
     public String getNombre() {
@@ -69,5 +60,25 @@ public class FormularioPersonas extends Formulario {
 
     public void setCorreo(String correo) {
         this.correo.setText(correo);
+    }
+
+    @Override
+    public void llenarCampos(String[] camposExistentes) {
+        setId(camposExistentes[0]);
+        setNombre(camposExistentes[1]);
+        setNumeroTelefono(camposExistentes[2]);
+        setCorreo(camposExistentes[3]);
+    }
+
+    @Override
+    public String[] obtenerDatosFormulario() {
+        String[] datos = {
+            this.getId(),
+            this.getNombre(),
+            this.getNumeroTelefono(),
+            this.getCorreo()
+        };
+
+        return datos;
     }
 }

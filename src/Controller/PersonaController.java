@@ -20,13 +20,6 @@ public class PersonaController implements CrudInterface {
 
         Persona personas = new Persona(id, nombre, numeroTelefono, correo);
         lista.add(personas);
-
-        for (Persona persona : lista) {
-            System.out.println(persona.getId());
-            System.out.println(persona.getNombre());
-            System.out.println(persona.getNumeroTelefono());
-            System.out.println(persona.getCorreo());
-        }
     }
 
 //consultar  persona (opcion 1)-----------------------------------------------------------------------------------
@@ -42,42 +35,33 @@ public class PersonaController implements CrudInterface {
         }
     }
 
-//consular lista (opcion 2)--------------------------------------------------------------------------------
-    @Override
-    public void verificarLista() {
-        String info = "";
-        for (Persona persona : lista) {
-            JOptionPane.showMessageDialog(null, lista);
-
-        }
-    }
-
 // Editar -------------------------------------------------------------------------------------------------
     @Override
-    public void Editar() {
+    public void Editar(String[] datos) {
         Persona persona = new Persona();
-        String personaID = JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea modificar: ");
+        String id = datos[0];
+        String nombre = datos[1];
+        String numeroTel = datos[2];
+        String correo = datos[3];
+        
         for (int i = 0; i < lista.size(); i++) {
             persona = (Persona) lista.get(i);
-            if (persona.getId().equals(personaID)) {
-                persona.setNombre(JOptionPane.showInputDialog("Ingrese el nuevo nombre"));
-                persona.setNumeroTelefono(JOptionPane.showInputDialog("Ingrese el nuevo numero de telefono"));
-                persona.setCorreo(JOptionPane.showInputDialog("Ingrese el nuevo Correo"));
+            if (persona.getId().equals(id)) {
+                persona.setNombre(nombre);
+                persona.setNumeroTelefono(numeroTel);
+                persona.setCorreo(correo);
                 break;
             }
         }
     }
 
 //Eliminar ----------------------------------------------------------------------------------------------------
-    //while(Comprado==fasle){
     @Override
-    public void Eliminar() {
+    public void Eliminar(String id) {
         Persona persona = new Persona();
-        String personaID = JOptionPane.showInternalInputDialog(null, "Ingrese el ID de la persona que desea eliminar: ");
         for (int i = 0; i < lista.size(); i++) {
             persona = (Persona) lista.get(i);
-            if (persona.getId().equals(personaID)) {
-                JOptionPane.showMessageDialog(null, "La persona ha sido eliminada.");
+            if (persona.getId().equals(id)) {
                 lista.remove(i);
                 break;
             }

@@ -13,7 +13,6 @@ public class FormularioAutos extends Formulario {
     private JTextField precio = new JTextField();
     private Object[] campos;
 
-    
     {
         this.chasis = new JTextField();
         this.marca = new JTextField();
@@ -21,34 +20,19 @@ public class FormularioAutos extends Formulario {
         this.modelo = new JTextField();
         this.color = new JTextField();
         this.precio = new JTextField();
-        
-          this.campos = new Object[] {
-            "Numero de placa",this.chasis,
-            "Marca",this.marca,
-            "Estilo",this.estilo,
-            "Modelo",this.modelo,
-            "Color",this.color,
-            "Precio",this.precio,
-        };
+
+        this.campos = new Object[]{
+            "Numero de placa", this.chasis,
+            "Marca", this.marca,
+            "Estilo", this.estilo,
+            "Modelo", this.modelo,
+            "Color", this.color,
+            "Precio", this.precio,};
     }
 
     public FormularioAutos() {
-        super(null,nombreFormulario);
+        super(null, nombreFormulario);
         setCampos(campos);
-    }
-
-    @Override
-    public String[] obtenerDatosFormulario() {
-        String[] datos = {
-            this.getChasis(),
-            this.getMarca(),
-            this.getEstilo(),
-            this.getModelo(),
-            this.getColor(),
-            this.getPrecio()
-        };
-        
-        return datos;
     }
 
     public String getChasis() {
@@ -83,7 +67,7 @@ public class FormularioAutos extends Formulario {
         this.modelo.setText(modelo);
     }
 
-        public String getColor() {
+    public String getColor() {
         return color.getText();
     }
 
@@ -97,5 +81,30 @@ public class FormularioAutos extends Formulario {
 
     public void setPrecio(String precio) {
         this.precio.setText(precio);
+    }
+
+    @Override
+    public void llenarCampos(String[] campos) {
+        setChasis(campos[0]);
+        setMarca(campos[1]);
+        setEstilo(campos[2]);
+        setModelo(campos[3]);
+        setColor(campos[4]);
+        setPrecio(campos[5]);
+        
+    }
+    
+      @Override
+    public String[] obtenerDatosFormulario() {
+        String[] datos = {
+            this.getChasis(),
+            this.getMarca(),
+            this.getEstilo(),
+            this.getModelo(),
+            this.getColor(),
+            this.getPrecio()
+        };
+
+        return datos;
     }
 }

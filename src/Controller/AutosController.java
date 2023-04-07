@@ -11,16 +11,16 @@ public class AutosController implements CrudInterface {
 
 //crear ----------------------------------------------------------------------------------------------
     @Override
-    public void Agregar() {
-        String chasis;
-        String marca;
-        String estilo;
-        String modelo;
-        String color;
-        String precio;
+    public void Agregar(String[] datos) {
+        String chasis = datos[0];
+        String marca = datos[1];
+        String estilo = datos[2];
+        String modelo = datos[3];
+        String color = datos[4];
+        String precio = datos[5];
 
-        //Autos auto = new Autos(chasis, marca, estilo, modelo, color, precio);
-        //lista.add(auto);
+        Autos auto = new Autos(chasis, marca, estilo, modelo, color, precio);
+        lista.add(auto);
     }
 
 //consultar  persona (opcion 1)-----------------------------------------------------------------------------------
@@ -41,30 +41,25 @@ public class AutosController implements CrudInterface {
         }
     }
 
-//consular lista (opcion 2)--------------------------------------------------------------------------------
-    @Override
-    public void verificarLista() {
-        String info = "";
-        for (Autos auto : lista) {
-            JOptionPane.showMessageDialog(null, lista);
-
-        }
-    }
-
 // Editar -------------------------------------------------------------------------------------------------
     @Override
-    public void Editar() {
+    public void Editar(String[] datos) {
         Autos auto = new Autos();
-        int autoChasis = Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el número de chasis que desea modificar: "));
+        String chasis = datos[0];
+        String marca = datos[1];
+        String estilo = datos[2];
+        String modelo = datos[3];
+        String color = datos[4];
+        String precio = datos[5];
+
         for (int i = 0; i < lista.size(); i++) {
             auto = (Autos) lista.get(i);
-            if (auto.getId() == autoChasis) {
-                lista.get(autoChasis).setChasis(JOptionPane.showInputDialog("Ingrese el número de chasis"));
-                lista.get(autoChasis).setMarca(JOptionPane.showInputDialog("Ingrese la marca del auto"));
-                lista.get(autoChasis).setEstilo(JOptionPane.showInputDialog("Ingrese el estilo del auto"));
-                lista.get(autoChasis).setModelo(JOptionPane.showInputDialog("Ingrese el modelo del auto"));
-                lista.get(autoChasis).setColor(JOptionPane.showInputDialog("Ingrese el color del auto"));
-                lista.get(autoChasis).setPrecio(JOptionPane.showInputDialog("Ingrese el precio del auto"));
+            if (auto.getChasis().equalsIgnoreCase(chasis)) {
+                auto.setMarca(marca);
+                auto.setEstilo(estilo);
+                auto.setModelo(modelo);
+                auto.setColor(color);
+                auto.setPrecio(precio);
                 break;
             }
         }
@@ -73,13 +68,11 @@ public class AutosController implements CrudInterface {
 //Eliminar ----------------------------------------------------------------------------------------------------
     //while(Comprado==fasle){
     @Override
-    public void Eliminar() {
+    public void Eliminar(String id) {
         Autos auto = new Autos();
-        int autoChasis = Integer.parseInt(JOptionPane.showInternalInputDialog(null, "Ingrese el número de chasis del auto que desea eliminar: "));
         for (int i = 0; i < lista.size(); i++) {
             auto = (Autos) lista.get(i);
-            if (auto.getId() == autoChasis) {
-                JOptionPane.showMessageDialog(null, "El registro ha sido eliminado.");
+            if (auto.getChasis().equalsIgnoreCase(id)) {
                 lista.remove(i);
                 break;
             }
@@ -93,11 +86,31 @@ public class AutosController implements CrudInterface {
 
     @Override
     public boolean registroExiste(String idSolicitado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        boolean existe = false;
+        for (Autos auto : lista) {
+            if (auto.getChasis().equals(idSolicitado)) {
+                existe = true;
+            }
+        }
+        return existe;
     }
 
     @Override
     public String[] obtenerRegistro(String idSolicitado) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String[] registro = {};
+        for (Autos auto : lista) {
+            if (auto.getChasis().equals(idSolicitado)) {
+                registro = new String[]{
+                    auto.getChasis(),
+                    auto.getMarca(),
+                    auto.getEstilo(),
+                    auto.getModelo(),
+                    auto.getModelo(),
+                    auto.getPrecio()
+                };
+            }
+        }
+
+        return registro;
     }
 }

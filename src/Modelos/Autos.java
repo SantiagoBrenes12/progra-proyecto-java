@@ -33,7 +33,7 @@ public class Autos {
         this.chasis = chasis;
     }
 
-    public String getMarca(String marca) {
+    public String getMarca() {
         return marca;
     }
     
