@@ -20,6 +20,10 @@ public class ControllerFactory {
         if(nombreControlador.equalsIgnoreCase("modulo autos")){
             return new AutosController();
         }
+        
+        if(nombreControlador.equalsIgnoreCase("modulo ventas")){
+            return new VentaController();
+        }
       
         return null;
     }

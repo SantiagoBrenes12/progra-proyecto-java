@@ -1,25 +1,25 @@
 package Modelos;
 
-
 public class Persona {
+
     //Atributos
     private String id;
     private String nombre;
     private String numeroTelefono;
     private String correo;
-    
-    //Constructores
+    private String[] vehiculos;
 
+    //Constructores
     public Persona() {
     }
-    
+
     public Persona(String id, String nombre, String numeroTelefono, String correo) {
         this.id = id;
         this.nombre = nombre;
         this.numeroTelefono = numeroTelefono;
         this.correo = correo;
     }
- //get set
+    //get set
 
     public String getId() {
         return id;
@@ -52,11 +52,14 @@ public class Persona {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public String[] getVehiculos() {
+        return vehiculos;
+    }
+
     
-    
 
-public static void main(String[] args){
+    public static void main(String[] args) {
+    }
+
 }
-
-}
-

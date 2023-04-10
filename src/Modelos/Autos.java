@@ -9,6 +9,7 @@ public class Autos {
     private String modelo;
     private String color;
     private String precio;
+    private boolean vendido;
     
     //Constructores
 

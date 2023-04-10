@@ -11,9 +11,9 @@ public class FormularioFactory {
             return new FormularioPersonas();
         }
         
-//        if (formulario.equalsIgnoreCase("ventas")){
-//            return new FormularioVentas();
-//        }
+        if (formulario.equalsIgnoreCase("modulo ventas")){
+            return new FormularioVentas();
+        }
         
         return null;
     }
